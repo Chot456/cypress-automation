@@ -13,5 +13,11 @@ describe('My forth test', () => {
           })
         }
       })
+
+
+      // Mouse hover
+      cy.get('.mouse-hover-content').invoke('show')
+      cy.get('[href="\#top"]').click()
+      cy.url().should('include', 'top')
   })
 })

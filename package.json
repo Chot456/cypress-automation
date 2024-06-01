@@ -5,11 +5,29 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cy:open": "cypress open"
+    "cy:open": "npx cypress open",
+    "cy:chromeTest": "npx run test --browser chrome",
+    "cy:headTest": "npx cypress run --headed",
+    "cy:smokeTest": "npx cypress run --spec cypress/integrations/examples/calendar.js",
+    "cy:recordDashboardTest": "npx cypress run --record --key 0c016026-444f-4c8d-bc2d-8d670eecb644 --spec cypress/integrations/examples/*.js --headed --browser chrome",
+    "cy:allBDDHeadedTest": "npx cypress run --spec cypress/integrations/examples/BDD/*.feature --headed --browser chrome",
+    "cy:allBDDTest": "npx cypress run --spec cypress/integrations/examples/BDD/*.feature",
+    "cy:regressionBDDTest": "npx cypress run --env tags='@Regression' --headed --browser chrome"
+  },
+  "cypress-cucumber-preprocessor": {
+    "json": {
+      "enabled": true,
+      "output": "cypress/cucumberReports/results.json"
+    }
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^13.9.0"
+    "@badeball/cypress-cucumber-preprocessor": "^20.0.5",
+    "@cypress/browserify-preprocessor": "^3.0.2",
+    "cypress": "^13.9.0",
+    "cypress-iframe": "^1.0.1",
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "multiple-cucumber-html-reporter": "^3.6.2"
   }
 }
